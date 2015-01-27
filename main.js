@@ -55,12 +55,20 @@ $(document).on('ready', function() {
 
 
   setInterval(function(){
+	  var hours = now.getHours();
+	  var convertedHours = hours % 12;
+	  if (convertedHours < 10){
+	  	convertedHours = "0" + convertedHours;
+	  }
+	  console.log(convertedHours);
+
   	var minutes = new Date().getMinutes();
   	if (minutes < 10){
   		minutes = "0" + minutes;
   	}
 
   	$(".mins").html(minutes);
+  	$(".hours").html(convertedHours);
 
   }, 1000);
 
