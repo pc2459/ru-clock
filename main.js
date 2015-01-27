@@ -16,7 +16,7 @@ $(document).on('ready', function() {
 
 
   var labels = $('<ul class="labels"></ul>');
-  var amPmLabels = $('<li></li>');
+  var amPmLabels = $('<li class="AMPM"></li>');
   var autoLabel = $('<li>AUTO</li>');
   if(hours>11){
   	amPmLabels.append("PM");
@@ -55,12 +55,12 @@ $(document).on('ready', function() {
 
 
   setInterval(function(){
-	  var hours = now.getHours();
+	  var hours = new Date().getHours();
 	  var convertedHours = hours % 12;
 	  if (convertedHours < 10){
 	  	convertedHours = "0" + convertedHours;
 	  }
-	  console.log(convertedHours);
+
 
   	var minutes = new Date().getMinutes();
   	if (minutes < 10){
@@ -69,6 +69,13 @@ $(document).on('ready', function() {
 
   	$(".mins").html(minutes);
   	$(".hours").html(convertedHours);
+
+  	if(hours>11){
+  		$(".AMPM").html("PM");
+  	}
+  	else{
+  		$(".AMPM").html("AM");
+  	}
 
   }, 1000);
 
